@@ -1,0 +1,38 @@
+// chlo code likhte hain 
+#include<stdio.h>
+#include<math.h>
+int main(){//opening of the main program
+	int N,x1,y1,x2,y2,i,k=0,j;
+	int a[10][10];//a 2-D array
+	printf("Enter the no. of customers using the application at one moment");
+	scanf("%d",&N);
+	i=0;
+	while(k<N){//opening of the while loop
+		++k;
+		printf("Enter the x-source co-ordinates of the user");
+		x1=rand()%10+1;
+		printf("\t%d\n",x1);
+		printf("Enter the y-source co-ordinates of the user");
+		y1=rand()%10+1;
+		printf("\t%d\n",y1);
+		printf("Enter the x-destination co-ordinates of the user");
+		x2=rand()%10+1;
+		printf("\t%d\n",x2);
+		printf("Enter the y-destination co-ordinates of the user");
+		y2=rand()%10+1;
+		printf("\t%d\n",y2);
+		for(i=0;i<10;i++){
+			for(j=0;j<10;j++){
+				if(i==x1 && j==y1){
+					a[i][j]='s';
+				}else if(i==x2 && j==y2){
+					a[i][j]='f';
+				}else{
+					a[i][j]=0;
+				}
+				printf("%d\t",a[i][j]);
+			}
+			printf("\n");
+		}  
+	}//closing of the while loop
+}//closing of the main program
