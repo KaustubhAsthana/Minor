@@ -1,4 +1,3 @@
-
 //minor3.c is the final file
 //here we need to print the separate distances being generated for each path
 //WE ARE CONSIDERING THE TIME IN 24 HOUR FORMAT
@@ -10,6 +9,7 @@
 #define V 10
 #define INF 9999 
 int value=0;
+int D[V][V];//D will be the array that will be used for printing the distances 
 int main(){
 	FILE *fptr;
 	char filename[100];
@@ -195,7 +195,6 @@ int dijkstra(int graph[V][V], int src, int dest)//iss function mein change krna 
   printf("\n");
   printf("Total Shortest Distance Travelled : %d\n", weightTable[wtTableR-1][dest]);//weightTable array ki iss particular cell ki value mein change krna pdega 
 	//return (weightTable[wtTableR-1][dest]/5); iss line mein bhi ek change kr rhe hain try krke dekhte hain
-	printf("The value of the variable just for checking purposes: %d\n", value);
 	return (value);
 }
 	int w[V][V];
@@ -240,10 +239,13 @@ int dijkstra(int graph[V][V], int src, int dest)//iss function mein change krna 
            			//the question ya yun khe ki problem yha aa rhi hain ki value variable ki value use krni hain for counting the 
            			//no. of nodes but yha pr since variable distance hain so simple division nhi ho pa rha hain
            			//need the value of variable at any cost uske baad apna program perfect hain
+					D[i][j]=w[i][j];
 					edge(g,i,j);
 				}
-				else
+				else{
+					D[i][j]=0;
 					w[i][j]=INF;
+				}
 			}
 		}
 		printGraph(g);
@@ -495,6 +497,14 @@ int dijkstra(int graph[V][V], int src, int dest)//iss function mein change krna 
 			g1=d;
 		}
 		//printf("%0.2f",d);
+	}
+	for(i=0;i<V;i++){
+		for(j=0;j<V;j++){
+			if(D[i][j]!=0){
+				printf("%d-->%d : %d\t", i, j, D[i][j]);
+			}
+		}
+		printf("\n");
 	}
 	/*printf("%0.2f\n",e);
 	printf("%0.2f\n",f);
